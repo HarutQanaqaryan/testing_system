@@ -1,7 +1,9 @@
+import { NavBar } from "../components/navBar";
+
 export const Users = () => {
-    return (
-        <div>
-            Users
-        </div>
-    )
-}
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
+};
