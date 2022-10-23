@@ -98,7 +98,7 @@ export const Question = (props: QuestionProps) => {
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleFirsthAnswer} />
+            <input type="checkbox" id="correct" onChange={handleFirsthAnswer} checked={firstAnswer.correct}/>
           </div>
         </div>
         <div className="new-test_answer">
@@ -110,7 +110,7 @@ export const Question = (props: QuestionProps) => {
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleSecAnswer} />
+            <input type="checkbox" id="correct" onChange={handleSecAnswer} checked={secAnswer.correct}/>
           </div>
         </div>
         <div className="new-test_answer">
@@ -122,7 +122,7 @@ export const Question = (props: QuestionProps) => {
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleThirdAnswer} />
+            <input type="checkbox" id="correct" onChange={handleThirdAnswer} checked={thirdAnswer.correct}/>
           </div>
         </div>
         <div className="new-test_answer">
@@ -134,7 +134,7 @@ export const Question = (props: QuestionProps) => {
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleFourthAnswer} />
+            <input type="checkbox" id="correct" onChange={handleFourthAnswer} checked={fourthAnswer.correct}/>
           </div>
         </div>
       </div>
