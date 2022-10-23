@@ -4,4 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.error_message {
+  color: rgba(132, 38, 38, 0.856);
 }
