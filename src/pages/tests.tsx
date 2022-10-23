@@ -23,12 +23,14 @@ export const Tests = () => {
     setTests(tests.filter((el) => el.id !== Number(e.target.id)));
   };
 
-  const saveNewTest = () => {
-    setTests([...tests, checkTestsStorage()]);
+  const saveTest = () => {
+    if (checkTestsStorage() !== false) {
+      setTests([...tests, checkTestsStorage()]);
+    }
     setIsModal(!isModal);
+    localStorage.removeItem("TEST")
   };
 
-  console.log(tests)
   return (
     <div>
       <NavBar />
@@ -54,7 +56,7 @@ export const Tests = () => {
       </div>
       {isModal && (
         <NewTest
-          closeModal={saveNewTest}
+          closeModal={saveTest}
           lastTestId={tests[tests.length - 1].id + 1}
         />
       )}

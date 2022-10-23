@@ -4,7 +4,8 @@ interface TextFieldProps {
   type: string;
   label: string;
   onChange: any;
-  disabled?: boolean
+  disabled?: boolean;
+  value?: string
 }
 
 export const TextField = (props: TextFieldProps) => {
@@ -16,6 +17,7 @@ export const TextField = (props: TextFieldProps) => {
         onChange={props.onChange}
         className="textfield_input"
         disabled={props.disabled}
+        value={props.value}
       />
     </div>
   );

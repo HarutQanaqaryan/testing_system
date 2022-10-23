@@ -39,7 +39,27 @@ export const Question = (props: QuestionProps) => {
   const handleFourthAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
     answerSetter(e.target, setFourthAnswer, fourthAnswer);
   };
-  
+
+  const removeFields = () => {
+    setQuestion("");
+    setFirstAnswer({
+      answer: "",
+      correct: false,
+    });
+    setSecAnswer({
+      answer: "",
+      correct: false,
+    });
+    setThirdAnswer({
+      answer: "",
+      correct: false,
+    });
+    setFourthAnswer({
+      answer: "",
+      correct: false,
+    });
+  };
+
   useEffect(() => {
     sessionStorage.setItem(
       "QUESTION",
@@ -59,9 +79,14 @@ export const Question = (props: QuestionProps) => {
   ]);
 
   return (
-    <div className="new-test_question">
+    <form className="new-test_question" onSubmit={props.saveQuestion}>
       <div>
-        <TextField label="Вопрос" onChange={handleQuestion} type="text" />
+        <TextField
+          label="Вопрос"
+          onChange={handleQuestion}
+          type="text"
+          value={question}
+        />
       </div>
       <div className="new-test_answers">
         <div className="new-test_answer">
@@ -69,6 +94,7 @@ export const Question = (props: QuestionProps) => {
             label="Ответ 1"
             onChange={handleFirsthAnswer}
             type="text"
+            value={firstAnswer.answer}
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
@@ -76,14 +102,24 @@ export const Question = (props: QuestionProps) => {
           </div>
         </div>
         <div className="new-test_answer">
-          <TextField label="Ответ 1" onChange={handleSecAnswer} type="text" />
+          <TextField
+            label="Ответ 1"
+            onChange={handleSecAnswer}
+            type="text"
+            value={secAnswer.answer}
+          />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
             <input type="checkbox" id="correct" onChange={handleSecAnswer} />
           </div>
         </div>
         <div className="new-test_answer">
-          <TextField label="Ответ 1" onChange={handleThirdAnswer} type="text" />
+          <TextField
+            label="Ответ 1"
+            onChange={handleThirdAnswer}
+            type="text"
+            value={thirdAnswer.answer}
+          />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
             <input type="checkbox" id="correct" onChange={handleThirdAnswer} />
@@ -94,6 +130,7 @@ export const Question = (props: QuestionProps) => {
             label="Ответ 1"
             onChange={handleFourthAnswer}
             type="text"
+            value={fourthAnswer.answer}
           />
           <div className="correct_answer">
             <label htmlFor="correct">Правильный ответ</label>
@@ -101,7 +138,7 @@ export const Question = (props: QuestionProps) => {
           </div>
         </div>
       </div>
-      <Button name={"Сохранить"} onClick={props.saveQuestion} />
-    </div>
+      <Button name={"Сохранить"} onClick={() => removeFields()} />
+    </form>
   );
 };

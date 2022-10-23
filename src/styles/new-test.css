@@ -1,12 +1,15 @@
+.new-test_wrapper {
+  position: absolute;
+  top: 20px;
+  left: 25%;
+  margin: auto 0;
+}
+
 .new-test {
   width: 50vw;
   height: fit-content;
   background-color: rgba(51, 102, 51);
   padding: 30px 70px;
-  position: absolute;
-  top: 20px;
-  left: 25%;
-  margin: auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +49,4 @@
 }
 .new-test_question {
   padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  background-color: rgba(204, 255, 204, 0.507);
 }

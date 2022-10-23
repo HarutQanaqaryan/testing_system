@@ -3,7 +3,6 @@ import { TextField } from "./textField";
 import "../styles/new-test.css";
 import { Button } from "./button";
 import close from "../assets/close.svg";
-import addQuestionIcon from "../assets/add.png";
 import { Question } from "./question";
 
 interface NewTestProps {
@@ -12,28 +11,15 @@ interface NewTestProps {
 }
 
 export const NewTest = (props: NewTestProps) => {
-  const [quantity, setQuantity] = useState([1]);
   const [newTestName, setNewTestName] = useState("");
   const [storageQuestion, setStorageQuestion] = useState<any[]>([]);
-
-  const createQuestionBlock = () => {
-    return quantity.map((el) => (
-      <Question key={el + 1} questionId={el} saveQuestion={saveQuestion} />
-    ));
-  };
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTestName(e.target.value);
   };
 
-  const addQuestion = () => {
-    setQuantity((prevState) => [
-      ...prevState,
-      quantity[quantity.length - 1] + 1,
-    ]);
-  };
-
   const saveQuestion = (e: any) => {
+    e.preventDefault();
     setStorageQuestion((prevState) => [
       ...prevState,
       typeof sessionStorage.getItem("QUESTION") === "string"
@@ -52,25 +38,19 @@ export const NewTest = (props: NewTestProps) => {
         questions: storageQuestion,
       })
     );
-    sessionStorage.removeItem("QUESTION");
   };
 
   return (
-    <div className="new-test">
-      <img
-        src={close}
-        alt="Закрыть"
-        className="new-test-close"
-        onClick={props.closeModal}
-      />
-      <TextField label="Название Теста" onChange={handleFields} type="text" />
-      {createQuestionBlock()}
-      <div className="tests_add">
+    <div className="new-test_wrapper">
+      <div className="new-test">
         <img
-          src={addQuestionIcon}
-          alt="Добавить Вопрос"
-          onClick={addQuestion}
+          src={close}
+          alt="Закрыть"
+          className="new-test-close"
+          onClick={props.closeModal}
         />
+        <TextField label="Название Теста" onChange={handleFields} type="text" />
+        <Question questionId={Math.random()} saveQuestion={saveQuestion} />
       </div>
       <Button name="Добавить тест" onClick={addTest} />
     </div>
