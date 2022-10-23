@@ -31,8 +31,6 @@ export const Login = () => {
     }
   };
 
-  console.log(login === FAKE_LOGIN && password === FAKE_PASSWORD);
-
   return (
     <div className="login">
       <form onSubmit={(e) => signIn(e)}>
