@@ -29,7 +29,7 @@ export const StatisticModal = (props: StatisticModalProps) => {
                 <p>
                   Дата: {date} Время: {time}
                 </p>
-                <p>Pатрачено на прохождение: {timeSpent} мин.</p>
+                <p>Затрачено на прохождение: {timeSpent} мин.</p>
                 <p>Количество правильных ответов: {correctAnswers}</p>
               </div>
             )

@@ -13,6 +13,7 @@ interface NewTestProps {
 export const NewTest = (props: NewTestProps) => {
   const [newTestName, setNewTestName] = useState<string>("");
   const [storageQuestion, setStorageQuestion] = useState<any[]>([]);
+  const [isTestAdded, setIsTestAdded] = useState<boolean>(false);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTestName(e.target.value);
@@ -38,6 +39,9 @@ export const NewTest = (props: NewTestProps) => {
         questions: storageQuestion,
       })
     );
+    setNewTestName("");
+    setIsTestAdded(true);
+    setTimeout(() => setIsTestAdded(false), 2000);
   };
 
   return (
@@ -49,10 +53,20 @@ export const NewTest = (props: NewTestProps) => {
           className="new-test-close"
           onClick={props.closeModal}
         />
-        <TextField label="Название Теста" onChange={handleFields} type="text" />
+        <TextField
+          label="Название Теста"
+          onChange={handleFields}
+          type="text"
+          value={newTestName}
+        />
         <Question questionId={Math.random()} saveQuestion={saveQuestion} />
       </div>
       <Button name="Добавить тест" onClick={addTest} />
+      {isTestAdded && (
+        <div className="new-test_question-saved">
+          <p>Тест добавлен!</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -60,6 +60,7 @@ export const Question = (props: QuestionProps) => {
       answer: "",
       correct: false,
     });
+    setTimeout(() => setisQuestionSaved(false), 1000);
   };
 
   useEffect(() => {
@@ -71,7 +72,6 @@ export const Question = (props: QuestionProps) => {
         answers: [firstAnswer, secAnswer, thirdAnswer, fourthAnswer],
       })
     );
-    setTimeout(() => setisQuestionSaved(false), 5000);
   }, [
     firstAnswer,
     secAnswer,
