@@ -11,7 +11,7 @@ interface NewTestProps {
 }
 
 export const NewTest = (props: NewTestProps) => {
-  const [newTestName, setNewTestName] = useState("");
+  const [newTestName, setNewTestName] = useState<string>("");
   const [storageQuestion, setStorageQuestion] = useState<any[]>([]);
 
   const handleFields = (e: React.ChangeEvent<HTMLInputElement>) => {
