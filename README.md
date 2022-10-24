@@ -3,18 +3,16 @@
 ___
 
 ### ***Task List***
- - Application login form.
- - Implement user authorization/registration
+ - Implement user authorization
 - Tests page(on/off and remove tests, create new tests)
 - Users page(view statistics of each user by tests)
 - Log out
 ___
 ### ***Technology stack***
-- HTML5
-- CSS
 - React
 - React Router-Dom
 - TypeScript
+- CSS
 ___
 
 ### ***Install and run***
