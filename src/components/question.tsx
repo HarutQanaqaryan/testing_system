@@ -23,6 +23,7 @@ export const Question = (props: QuestionProps) => {
     answer: "",
     correct: false,
   });
+  const [isQuestionSaved, setisQuestionSaved] = useState(false);
 
   const handleQuestion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuestion(e.target.value);
@@ -41,6 +42,7 @@ export const Question = (props: QuestionProps) => {
   };
 
   const removeFields = () => {
+    setisQuestionSaved(true);
     setQuestion("");
     setFirstAnswer({
       answer: "",
@@ -69,6 +71,7 @@ export const Question = (props: QuestionProps) => {
         answers: [firstAnswer, secAnswer, thirdAnswer, fourthAnswer],
       })
     );
+    setTimeout(() => setisQuestionSaved(false), 5000);
   }, [
     firstAnswer,
     secAnswer,
@@ -79,66 +82,94 @@ export const Question = (props: QuestionProps) => {
   ]);
 
   return (
-    <form className="new-test_question" onSubmit={props.saveQuestion}>
-      <div>
-        <TextField
-          label="Вопрос"
-          onChange={handleQuestion}
-          type="text"
-          value={question}
-        />
-      </div>
-      <div className="new-test_answers">
-        <div className="new-test_answer">
+    <div>
+      <form className="new-test_question" onSubmit={props.saveQuestion}>
+        <div>
           <TextField
-            label="Ответ 1"
-            onChange={handleFirsthAnswer}
+            label="Вопрос"
+            onChange={handleQuestion}
             type="text"
-            value={firstAnswer.answer}
+            value={question}
           />
-          <div className="correct_answer">
-            <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleFirsthAnswer} checked={firstAnswer.correct}/>
+        </div>
+        <div className="new-test_answers">
+          <div className="new-test_answer">
+            <TextField
+              label="Ответ 1"
+              onChange={handleFirsthAnswer}
+              type="text"
+              value={firstAnswer.answer}
+            />
+            <div className="correct_answer">
+              <label htmlFor="correct">Правильный ответ</label>
+              <input
+                type="checkbox"
+                id="correct"
+                onChange={handleFirsthAnswer}
+                checked={firstAnswer.correct}
+              />
+            </div>
+          </div>
+          <div className="new-test_answer">
+            <TextField
+              label="Ответ 1"
+              onChange={handleSecAnswer}
+              type="text"
+              value={secAnswer.answer}
+            />
+            <div className="correct_answer">
+              <label htmlFor="correct">Правильный ответ</label>
+              <input
+                type="checkbox"
+                id="correct"
+                onChange={handleSecAnswer}
+                checked={secAnswer.correct}
+              />
+            </div>
+          </div>
+          <div className="new-test_answer">
+            <TextField
+              label="Ответ 1"
+              onChange={handleThirdAnswer}
+              type="text"
+              value={thirdAnswer.answer}
+            />
+            <div className="correct_answer">
+              <label htmlFor="correct">Правильный ответ</label>
+              <input
+                type="checkbox"
+                id="correct"
+                onChange={handleThirdAnswer}
+                checked={thirdAnswer.correct}
+              />
+            </div>
+          </div>
+          <div className="new-test_answer">
+            <TextField
+              label="Ответ 1"
+              onChange={handleFourthAnswer}
+              type="text"
+              value={fourthAnswer.answer}
+            />
+            <div className="correct_answer">
+              <label htmlFor="correct">Правильный ответ</label>
+              <input
+                type="checkbox"
+                id="correct"
+                onChange={handleFourthAnswer}
+                checked={fourthAnswer.correct}
+              />
+            </div>
           </div>
         </div>
-        <div className="new-test_answer">
-          <TextField
-            label="Ответ 1"
-            onChange={handleSecAnswer}
-            type="text"
-            value={secAnswer.answer}
-          />
-          <div className="correct_answer">
-            <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleSecAnswer} checked={secAnswer.correct}/>
-          </div>
+        <Button name={"Сохранить"} onClick={() => removeFields()} />
+      </form>
+      {isQuestionSaved && (
+        <div className="new-test_question-saved">
+          <p>Вопрос сохранен!</p>
+          <p>Добавьте еще</p>
         </div>
-        <div className="new-test_answer">
-          <TextField
-            label="Ответ 1"
-            onChange={handleThirdAnswer}
-            type="text"
-            value={thirdAnswer.answer}
-          />
-          <div className="correct_answer">
-            <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleThirdAnswer} checked={thirdAnswer.correct}/>
-          </div>
-        </div>
-        <div className="new-test_answer">
-          <TextField
-            label="Ответ 1"
-            onChange={handleFourthAnswer}
-            type="text"
-            value={fourthAnswer.answer}
-          />
-          <div className="correct_answer">
-            <label htmlFor="correct">Правильный ответ</label>
-            <input type="checkbox" id="correct" onChange={handleFourthAnswer} checked={fourthAnswer.correct}/>
-          </div>
-        </div>
-      </div>
-      <Button name={"Сохранить"} onClick={() => removeFields()} />
-    </form>
+      )}
+    </div>
   );
 };
